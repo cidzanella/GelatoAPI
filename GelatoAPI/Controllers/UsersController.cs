@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using GelatoAPI.Data;
 using GelatoAPI.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace GelatoAPI.Controllers
 {
@@ -30,6 +31,7 @@ namespace GelatoAPI.Controllers
 
         // GET: api/Users/5
         [HttpGet("{id}")]
+        [Authorize]
         public async Task<ActionResult<AppUser>> GetAppUser(int id)
         {
             var appUser = await _context.Users.FindAsync(id);

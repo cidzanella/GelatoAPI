@@ -33,6 +33,7 @@ namespace GelatoAPI
                 options.UseSqlite(Configuration.GetConnectionString("DefaultConnection"));
             });    
             services.AddControllers();
+            services.AddCors();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "GelatoAPI", Version = "v1" });
@@ -52,6 +53,8 @@ namespace GelatoAPI
             app.UseHttpsRedirection();
 
             app.UseRouting();
+
+            app.UseCors(opt => opt.AllowAnyHeader().AllowAnyMethod().WithOrigins("https://localhost:4200"));
 
             app.UseAuthorization();
 

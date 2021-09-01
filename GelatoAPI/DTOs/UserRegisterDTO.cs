@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace GelatoAPI.DTOs
 {
-    public class LoginDTO
+    public class UserRegisterDTO
     {
         [Required]
         public string UserName { get; set; }
@@ -14,5 +10,6 @@ namespace GelatoAPI.DTOs
         [Required]
         public string Password { get; set; }
 
+        public bool IsAdmin { get; set; } = false; 
     }
 }

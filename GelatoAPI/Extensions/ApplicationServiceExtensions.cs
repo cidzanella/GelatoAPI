@@ -4,10 +4,7 @@ using GelatoAPI.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using GelatoAPI.Helpers;
 
 namespace GelatoAPI.Extensions
 {
@@ -17,6 +14,8 @@ namespace GelatoAPI.Extensions
         {
             services.AddScoped<IAuthService, AuthService>();
             services.AddScoped<IUserService, UserService>();
+            services.AddScoped<IRawMaterialService, RawMaterialService>();
+            services.AddAutoMapper(typeof(AutoMapperProfiles).Assembly);
             services.AddScoped<ITokenService, TokenService>();
             services.AddDbContext<AppDbContext>(options =>
             {

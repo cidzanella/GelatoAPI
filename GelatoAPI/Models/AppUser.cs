@@ -4,6 +4,7 @@ namespace GelatoAPI.Models
 {
     public class AppUser
     {
+        [Key]
         public int Id { get; set; }
 
         [Required]

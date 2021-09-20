@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using GelatoAPI.Data;
 using Microsoft.AspNetCore.Authorization;
 using GelatoAPI.Interfaces;
 using GelatoAPI.Extensions;
@@ -17,12 +12,10 @@ namespace GelatoAPI.Controllers
     [ApiController]
     public class UsersController : ControllerBase
     {
-        private readonly AppDbContext _context;
         private readonly IUserService _userService;
 
-        public UsersController(AppDbContext context, IUserService userService)
+        public UsersController(IUserService userService)
         {
-            _context = context;
             _userService = userService;
         }
 
@@ -55,7 +48,6 @@ namespace GelatoAPI.Controllers
         }
 
         // POST: api/Users
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         // [Authorize]
         [HttpPost]
         public async Task<ActionResult<UserDTO>> PostUser(UserRegisterDTO user)
@@ -72,7 +64,6 @@ namespace GelatoAPI.Controllers
         }
 
         // PUT: api/Users/5
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
         public async Task<IActionResult> PutUser(int id, UserUpdateDTO userUpdateDto)
         {
@@ -94,14 +85,12 @@ namespace GelatoAPI.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteAppUser(int id)
         {
-            {
+            var response = await _userService.DeleteUserAsync(id);
+         
+            if (!response.Success)
+                return BadRequest($"{response.Message}: {response.HttpResponseCode}");
 
-                var response = await _userService.DeleteUserAsync(id);
-                if (!response.Success)
-                    return BadRequest($"{response.Message}: {response.HttpResponseCode}");
-
-                return NoContent();
-            }
+            return NoContent();
         }
 
     }

@@ -23,16 +23,16 @@ namespace GelatoAPI.Controllers
             _accountService = accountService;
         }
 
-        [HttpPost]
+        [HttpPost("login")]
         public async Task<ActionResult<UserDTO>> Login(UserLoginDTO loginDto)
         {
             if (!ModelState.IsValid)
-                return BadRequest(ModelState.GetErrorMessages());
+                return Unauthorized(ModelState.GetErrorMessages());
 
             UserResponse response = await _accountService.Login(loginDto);
             
             if (!response.Success)
-                return BadRequest(response.Message);
+                return Unauthorized(response.Message);
 
             return Ok(response.UserDto);
         }

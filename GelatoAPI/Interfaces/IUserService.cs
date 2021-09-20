@@ -1,9 +1,7 @@
 ﻿using GelatoAPI.DTOs;
 using GelatoAPI.Models;
 using GelatoAPI.Services.Communications;
-using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace GelatoAPI.Interfaces

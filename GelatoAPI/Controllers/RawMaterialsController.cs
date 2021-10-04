@@ -8,6 +8,7 @@ using GelatoAPI.Models;
 using GelatoAPI.Interfaces;
 using GelatoAPI.Extensions;
 using GelatoAPI.DTOs;
+using Microsoft.AspNetCore.Authorization;
 
 namespace GelatoAPI.Controllers
 {
@@ -23,6 +24,7 @@ namespace GelatoAPI.Controllers
         }
 
         // GET: api/RawMaterials
+        [Authorize]
         [HttpGet]
         public async Task<ActionResult<IEnumerable<RawMaterial>>> GetRawMaterials()
         {

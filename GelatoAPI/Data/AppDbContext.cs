@@ -13,7 +13,9 @@ namespace GelatoAPI.Data
         public DbSet<RawMaterial> RawMaterials { get; set; }
         public DbSet<RawMaterialSupplier> RawMaterialSuppliers { get; set; }
         public DbSet<RawMaterialType> RawMaterialTypes { get; set; }
-
+        public DbSet<BaseType> BaseTypes { get; set; }
+        public DbSet<BaseRecipe> BaseRecipes { get; set; }
+        public DbSet<GelatoRecipe> GelatoRecipes { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -57,6 +59,13 @@ namespace GelatoAPI.Data
                     new RawMaterialType { Id=4, Type="Basica"},
                     new RawMaterialType { Id=5, Type="Basica / Variegato"},
                     new RawMaterialType { Id=6, Type="Fruta"}
+                );
+
+            // Seed Base Types
+            modelBuilder.Entity<BaseType>()
+                .HasData(
+                new BaseType { Id=1, Name="Base Branca"},
+                new BaseType { Id=2, Name="Base Caramello"}
                 );
         }
     }

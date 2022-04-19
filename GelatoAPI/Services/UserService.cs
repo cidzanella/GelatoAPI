@@ -92,7 +92,7 @@ namespace GelatoAPI.Services
 
             } catch (Exception e)
             {
-                return new UserResponse($"An error occurred when saving the user: {e.Message}");
+                return new UserResponse($"An error occurred when saving the user: {e.Message} - {e.InnerException}");
             }
 
         }
@@ -120,7 +120,7 @@ namespace GelatoAPI.Services
             }
             catch (Exception e)
             {
-                return new UserResponse($"An error occurred when updating the user: {e.Message}");
+                return new UserResponse($"An error occurred when updating the user: {e.Message} - {e.InnerException}");
             }
 
         }
@@ -139,7 +139,7 @@ namespace GelatoAPI.Services
                 return new UserResponse(true, 204, "No Content.", null);
             } catch (Exception e)
             {
-                return new UserResponse($"An error occurred when deleting the user: {e.Message}");
+                return new UserResponse($"An error occurred when deleting the user: {e.Message} - {e.InnerException}");
             }
 
         }

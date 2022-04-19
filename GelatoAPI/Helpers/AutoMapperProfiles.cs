@@ -18,8 +18,19 @@ namespace GelatoAPI.Helpers
             CreateMap<AppUser, UserRegisterDTO>();
             CreateMap<AppUser, UserUpdateDTO>();
 
+            CreateMap<GelatoRecipe, GelatoRecipeDTO>();
+            CreateMap<GelatoRecipeDTO, GelatoRecipe>();
+            CreateMap<GelatoRecipeCreateDTO, GelatoRecipe>();
+
             CreateMap<RawMaterial, RawMaterialDTO>();
             CreateMap<RawMaterialDTO, RawMaterial>();
+
+            CreateMap<BaseRecipe, BaseRecipeDTO>();
+            CreateMap<BaseRecipeDTO, BaseRecipe>();
+            CreateMap<BaseRecipeCreateDTO, BaseRecipe>();
+            CreateMap<BaseType, BaseTypeDTO>();
+
+
         }
     }
 }

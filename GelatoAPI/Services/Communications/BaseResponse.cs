@@ -10,7 +10,7 @@ namespace GelatoAPI.Services.Communications
         public bool Success { get; protected set; }
         public int HttpResponseCode { get; protected set; }
         public string Message { get; protected set; }
-
+          
         public BaseResponse(bool success, int httpResponseCode, string message)
         {
             Success = success;

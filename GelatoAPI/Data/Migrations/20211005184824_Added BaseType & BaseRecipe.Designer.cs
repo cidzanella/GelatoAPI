@@ -3,14 +3,16 @@ using System;
 using GelatoAPI.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace GelatoAPI.Data.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20211005184824_Added BaseType & BaseRecipe")]
+    partial class AddedBaseTypeBaseRecipe
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -107,78 +109,6 @@ namespace GelatoAPI.Data.Migrations
                             Id = 2,
                             Name = "Base Caramello"
                         });
-                });
-
-            modelBuilder.Entity("GelatoAPI.Models.GelatoRecipe", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
-
-                    b.Property<bool>("Active")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("BaseInGrams")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("BaseTypeId")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<string>("Description")
-                        .HasColumnType("TEXT");
-
-                    b.Property<int>("ExtractionLayers")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<double?>("GelatoCost")
-                        .HasColumnType("REAL");
-
-                    b.Property<DateTime?>("GelatoCostDate")
-                        .HasColumnType("TEXT");
-
-                    b.Property<int?>("MinimumStockLevel")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<string>("Name")
-                        .HasColumnType("TEXT");
-
-                    b.Property<int?>("PastaAId")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int?>("PastaAInGrams")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int?>("PastaBId")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int?>("PastaBInGrams")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int?>("VariegatoAId")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int?>("VariegatoAInGrams")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int?>("VariegatoBId")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int?>("VariegatoBInGrams")
-                        .HasColumnType("INTEGER");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("BaseTypeId");
-
-                    b.HasIndex("PastaAId");
-
-                    b.HasIndex("PastaBId");
-
-                    b.HasIndex("VariegatoAId");
-
-                    b.HasIndex("VariegatoBId");
-
-                    b.ToTable("GelatoRecipes");
                 });
 
             modelBuilder.Entity("GelatoAPI.Models.RawMaterial", b =>
@@ -362,41 +292,6 @@ namespace GelatoAPI.Data.Migrations
                         .IsRequired();
 
                     b.Navigation("RawMaterial");
-                });
-
-            modelBuilder.Entity("GelatoAPI.Models.GelatoRecipe", b =>
-                {
-                    b.HasOne("GelatoAPI.Models.BaseType", "BaseType")
-                        .WithMany()
-                        .HasForeignKey("BaseTypeId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("GelatoAPI.Models.RawMaterial", "PastaA")
-                        .WithMany()
-                        .HasForeignKey("PastaAId");
-
-                    b.HasOne("GelatoAPI.Models.RawMaterial", "PastaB")
-                        .WithMany()
-                        .HasForeignKey("PastaBId");
-
-                    b.HasOne("GelatoAPI.Models.RawMaterial", "VariegatoA")
-                        .WithMany()
-                        .HasForeignKey("VariegatoAId");
-
-                    b.HasOne("GelatoAPI.Models.RawMaterial", "VariegatoB")
-                        .WithMany()
-                        .HasForeignKey("VariegatoBId");
-
-                    b.Navigation("BaseType");
-
-                    b.Navigation("PastaA");
-
-                    b.Navigation("PastaB");
-
-                    b.Navigation("VariegatoA");
-
-                    b.Navigation("VariegatoB");
                 });
 
             modelBuilder.Entity("GelatoAPI.Models.RawMaterial", b =>

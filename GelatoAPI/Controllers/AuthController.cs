@@ -3,6 +3,7 @@ using GelatoAPI.Extensions;
 using GelatoAPI.Interfaces;
 using GelatoAPI.Models;
 using GelatoAPI.Services.Communications;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -37,6 +38,7 @@ namespace GelatoAPI.Controllers
             return Ok(response.UserDto);
         }
 
+ 
         //public async Task<ActionResult<AppUser>> Register(RegisterDTO registerDto)
         //{
 

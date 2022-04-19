@@ -25,7 +25,7 @@ namespace GelatoAPI.Services
 
         public async Task<IEnumerable<RawMaterialDTO>> ReadRawMaterialsAsync()
         {
-            IEnumerable<RawMaterial> rawMaterials = await _context.RawMaterials.Include(r => r.Supplier).Include(r => r.Type).ToListAsync();
+            IEnumerable<RawMaterial> rawMaterials = await _context.RawMaterials.Include(r => r.Supplier).Include(r => r.Type).OrderBy(r => r.Name).ToListAsync();
             IEnumerable<RawMaterialDTO> rawMaterialsDto = _mapper.Map<IEnumerable<RawMaterialDTO>>(rawMaterials);
             return rawMaterialsDto;
         }
@@ -68,13 +68,16 @@ namespace GelatoAPI.Services
                 return new RawMaterialResponse(rawMaterialDto);
             } catch (Exception e)
             {
-                return new RawMaterialResponse($"An error occurred when saving the raw material: {e.Message}");
+                return new RawMaterialResponse($"An error occurred when saving the raw material: {e.Message} - {e.InnerException}");
             }
         }
 
         public async Task<RawMaterialResponse> UpdateRawMaterialAsync(RawMaterialDTO rawMaterialDto)
         {
             RawMaterial rawMaterial = await _context.RawMaterials.FindAsync(rawMaterialDto.Id);
+
+            if (rawMaterial == null)
+                return new RawMaterialResponse("Ocorreu um erro ao tentar localizar o item na base de dados.");
 
             try
             {
@@ -91,7 +94,7 @@ namespace GelatoAPI.Services
             }
             catch (Exception e)
             {
-                return new RawMaterialResponse($"An error occurred when saving the raw material: {e.Message}");
+                return new RawMaterialResponse($"An error occurred when saving the raw material update: {e.Message} - {e.InnerException}");
             }
 
         }
@@ -113,7 +116,7 @@ namespace GelatoAPI.Services
             }
             catch (Exception e)
             {
-                return new RawMaterialResponse($"An error occurred when deleting the raw material: {e.Message}");
+                return new RawMaterialResponse($"An error occurred when deleting the raw material: {e.Message} - {e.InnerException}");
             }
         }
 

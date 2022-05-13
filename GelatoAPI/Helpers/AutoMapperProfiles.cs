@@ -28,8 +28,17 @@ namespace GelatoAPI.Helpers
             CreateMap<BaseRecipe, BaseRecipeDTO>();
             CreateMap<BaseRecipeDTO, BaseRecipe>();
             CreateMap<BaseRecipeCreateDTO, BaseRecipe>();
-            CreateMap<BaseType, BaseTypeDTO>();
 
+            CreateMap<BaseType, BaseTypeDTO>();
+            CreateMap<BaseTypeDTO, BaseType>();
+
+            CreateMap<SorbettoType, SorbettoTypeDTO>();
+            CreateMap<SorbettoTypeDTO, SorbettoType>();
+            CreateMap<SorbettoTypeCreateDTO, SorbettoType>();
+
+            CreateMap<SorbettoRecipe, SorbettoRecipeDTO>();
+            CreateMap<SorbettoRecipeDTO, SorbettoRecipe>();
+            CreateMap<SorbettoRecipeCreateDTO, SorbettoRecipe>();
 
         }
     }

@@ -17,6 +17,8 @@ namespace GelatoAPI.Extensions
             services.AddScoped<IRawMaterialService, RawMaterialService>();
             services.AddScoped<IGelatoRecipeService, GelatoRecipeService>();
             services.AddScoped<IBaseRecipeService, BaseRecipeService>();
+            services.AddScoped<ISorbettoTypeService, SorbettoTypeService>();
+            services.AddScoped<ISorbettoRecipeService, SorbettoRecipeService>();    
             services.AddAutoMapper(typeof(AutoMapperProfiles).Assembly);
             services.AddScoped<ITokenService, TokenService>();
             services.AddDbContext<AppDbContext>(options =>

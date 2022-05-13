@@ -42,9 +42,5 @@ namespace GelatoAPI.DTOs
 
         public int MinimumStockLevel { get; set; }
 
-        public double GelatoCost { get; set; } //based on last raw material prices
-
-        public DateTime GelatoCostDate { get; set; } //date when cost was calculated
-
     }
 }

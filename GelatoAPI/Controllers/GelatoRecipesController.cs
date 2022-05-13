@@ -64,7 +64,7 @@ namespace GelatoAPI.Controllers
 
         // PUT api/<GelatoRecipesController>/5
         [HttpPut("{id}")]
-        public async Task<ActionResult> PutGelatoRecipe(int id, [FromBody] GelatoRecipeDTO gelatoRecipeDto)
+        public async Task<ActionResult> PutGelatoRecipe(int id, GelatoRecipeDTO gelatoRecipeDto)
         {
             if (id != gelatoRecipeDto.Id)
                 return BadRequest();

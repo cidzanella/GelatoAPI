@@ -16,6 +16,8 @@ namespace GelatoAPI.Data
         public DbSet<BaseType> BaseTypes { get; set; }
         public DbSet<BaseRecipe> BaseRecipes { get; set; }
         public DbSet<GelatoRecipe> GelatoRecipes { get; set; }
+        public DbSet<SorbettoRecipe> SorbettoRecipes { get; set; }
+        public DbSet<SorbettoType> SorbettoTypes { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

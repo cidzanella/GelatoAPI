@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace GelatoAPI.Services
+namespace GelatoAPI.Services.Communications
 {
     public class GelatoRecipeResponse : BaseResponse
     {
@@ -20,7 +20,7 @@ namespace GelatoAPI.Services
         public GelatoRecipeResponse(GelatoRecipeDTO gelatoRecipeDto) : this(true, 200, string.Empty, gelatoRecipeDto)
         { }
 
-        // create am error response
+        // create an error response
         public GelatoRecipeResponse(string message) : this(false, 404, message, null)
         { }
     }

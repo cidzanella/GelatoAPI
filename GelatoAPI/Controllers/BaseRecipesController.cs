@@ -117,11 +117,5 @@ namespace GelatoAPI.Controllers
 
             return NoContent();
         }
-
-        private bool BaseRecipeExists(int id)
-        {
-            return false;
-            //return _context.BaseRecipes.Any(e => e.Id == id);
-        }
     }
 }

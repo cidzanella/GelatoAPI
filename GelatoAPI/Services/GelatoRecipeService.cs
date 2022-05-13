@@ -3,6 +3,7 @@ using GelatoAPI.Data;
 using GelatoAPI.DTOs;
 using GelatoAPI.Interfaces;
 using GelatoAPI.Models;
+using GelatoAPI.Services.Communications;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
